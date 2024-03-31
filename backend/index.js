@@ -5,6 +5,10 @@ const app = express()
 var cors = require('cors')
 app.use(express.json())
 app.use(cors())
+const Staffs = require("./routes/staffRoute");
+const Subjects = require('./routes/subjectRoute');
+app.use("/staff", Staffs)
+app.use("/subject", Subjects)
 
 async function main() {
     return await mongoose.connect(process.env.CONNECTIONDB)
