@@ -24,7 +24,7 @@ const StaffSchema = new mongoose.Schema({
 
 StaffSchema.pre('save', async function (next) {
     const staff = this;
-    staff.email = staff.email.toUpperCase();
+    staff.email = staff.email.toLowerCase();
     next();
 });
 
