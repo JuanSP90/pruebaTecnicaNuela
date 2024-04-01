@@ -12,7 +12,7 @@ import avatar from '../images/avatarJ.png';
 
 const SideBarMenu: React.FC = () => {
     return (
-        <nav className="flex flex-col mt-10 ml-5 mr-5 justify-start">
+        <nav className="flex flex-col pt-12 pr-8 pb-8 pl-12 justify-start">
             <div className="flex flex-row items-center justify-between px-4 py-2 mt-2 mb-6">
                 <div className="flex flex-row justify-start items-center "><img src={tajamar} alt="logo" className="w-4 h-4 mr-1 border rounded-md" />  <a href="#!" className=" text-sm font-semibold text-gray-900 rounded-lg">
                     Tajamar

@@ -13,11 +13,12 @@ exports.getStaff = async (req, res) => {
             return res.status(404).json({ message: 'Profesor no encontrado' });
         }
 
-        const { staffName, email, phone, subjectId } =
+        const { _id, staffName, email, phone, subjectId } =
             await Staff.findById({
                 _id: staffId,
             }).populate("subjectId");
         res.json({
+            _id,
             staffName,
             email,
             phone,
