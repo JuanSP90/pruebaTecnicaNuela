@@ -4,11 +4,11 @@ import MainContainer from './components/MainContainer.tsx';
 
 const App: React.FC = () => {
   return (
-    <div className="flex h-screen bg-gray-100">
-      <div className="w-1/4">
+    <div className="flex h-screen justify-center">
+      <div style={{ width: '256px' }}>
         <SideBarMenu />
       </div>
-      <div className="w-3/4">
+      <div style={{ width: '1184px' }}>
         <MainContainer />
       </div>
     </div>
