@@ -43,7 +43,12 @@ const MainContainer: React.FC = () => {
     const totalHours = staff ? staff.subjectId.reduce((acc, subject) => acc + subject.hour, 0) : 0;
 
     if (!staff) {
-        return <div>Cargando datos del profesor...</div>;
+        return (
+            <div className="fixed inset-0 bg-gray-100 flex justify-center items-center">
+                <div className="text-lg font-semibold text-gray-800">
+                    Cargando datos del profesor...
+                </div>
+            </div>)
     }
 
     return (
