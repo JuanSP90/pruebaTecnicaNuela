@@ -31,8 +31,15 @@ const MainContainer: React.FC = () => {
     useEffect(() => {
         const fetchStaff = async () => {
             try {
-                const response = await axios.get<Staff>('http://localhost:3003/staff/6609d1627f7b4a724dd3da3b');
-                setStaff(response.data);
+                const allStaffsResponse = await axios.get<Staff[]>('http://localhost:3003/staff/all');
+
+                if (allStaffsResponse.data.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * allStaffsResponse.data.length);
+                    const randomStaffId = allStaffsResponse.data[randomIndex]._id;
+
+                    const response = await axios.get<Staff>(`http://localhost:3003/staff/${randomStaffId}`);
+                    setStaff(response.data);
+                }
             } catch (error) {
                 console.error('Error al obtener al profesor', error);
             }
@@ -71,7 +78,8 @@ const MainContainer: React.FC = () => {
                 <div className="flex items-center space-x-4">
                     <div className="flex-shrink-0">
                         <div className=" w-20 h-20 gap-0 rounded-lg bg-custom-gradient flex items-center justify-center">
-                            <h1 className="font-medium leading-none text-moradoFuerte text-3xl">MM</h1>
+                            <h1 className="font-medium leading-none text-moradoFuerte text-3xl">
+                                {staff?.staffName.split(' ').map(name => name[0].toUpperCase()).join('')}</h1>
                         </div>
                     </div>
                     <div className="flex-1 min-w-0">
@@ -127,9 +135,6 @@ const MainContainer: React.FC = () => {
                     </div>
                 </div>
             )}
-
-
-
         </div >
     );
 };

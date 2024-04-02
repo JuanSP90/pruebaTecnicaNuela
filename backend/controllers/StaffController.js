@@ -29,3 +29,18 @@ exports.getStaff = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Función para obtener a todos los profesores
+exports.getAllStaffs = async (req, res) => {
+    try {
+        const staffs = await Staff.find().select('_id');
+
+        if (staffs.length === 0) {
+            return res.status(404).json({ message: 'No hay profesores disponibles.' });
+        }
+
+        res.json(staffs);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

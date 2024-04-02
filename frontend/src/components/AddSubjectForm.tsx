@@ -62,6 +62,7 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAdd
                     </label>
 
                     <select id="subjectName" name="subjectName" className="block w-full p-2 mt-1 bg-white border border-customGray rounded-md shadow-sm focus:outline-none focus:ring-customBlue focus:border-customBlue" onChange={handleChange} value={formData.subjectName}>
+                        <option className="text-gray" value="">Selecciona tu asignatura</option>
                         <option value="Matemáticas">Matemáticas</option>
                         <option value="Física">Física</option>
                         <option value="Química">Química</option>
@@ -75,6 +76,7 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAdd
                         Tipo
                     </label>
                     <select id="type" name="type" className="block w-full p-2 mt-1 bg-white border border-customGray rounded-md shadow-sm focus:outline-none focus:ring-customBlue focus:border-customBlue" onChange={handleChange} value={formData.type}>
+                        <option className="text-gray" value="">Selecciona el tipo</option>
                         <option value="Obligatoria">Obligatoria</option>
                         <option value="Optativa">Optativa</option>
                     </select>
@@ -85,6 +87,7 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAdd
                         Curso
                     </label>
                     <select id="course" name="course" className="block w-full p-2 mt-1 bg-white border border-customGray rounded-md shadow-sm focus:outline-none focus:ring-customBlue focus:border-customBlue" onChange={handleChange} value={formData.course}>
+                        <option className="text-gray" value="">Selecciona el curso</option>
                         <option value="1º de Bachillerato">1º de Bachillerato</option>
                         <option value="2º de Bachillerato">2º de Bachillerato</option>
                     </select>
@@ -95,6 +98,7 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAdd
                         Grupo
                     </label>
                     <select id="group" name="group" className="block w-full p-2 mt-1 bg-white border border-customGray rounded-md shadow-sm focus:outline-none focus:ring-customBlue focus:border-customBlue" onChange={handleChange} value={formData.group}>
+                        <option className="text-gray" value="">Selecciona el grupo</option>
                         <option value="A">A</option>
                         <option value="B">B</option>
                         <option value="C">C</option>
@@ -106,6 +110,7 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAdd
                         Horas
                     </label>
                     <select id="hour" name="hour" className="block w-full p-2 mt-1 bg-white border border-customGray rounded-md shadow-sm focus:outline-none focus:ring-customBlue focus:border-customBlue" onChange={handleChange} value={formData.hour}>
+                        <option className="text-gray" value="">Selecciona las horas</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
@@ -117,6 +122,7 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAdd
                         Espacio
                     </label>
                     <select id="classroom" name="classroom" className="block w-full p-2 mt-1 bg-white border border-customGray rounded-md shadow-sm focus:outline-none focus:ring-customBlue focus:border-customBlue" onChange={handleChange} value={formData.classroom}>
+                        <option className="text-gray" value="">Selecciona el espacio</option>
                         <option value="1º Bach - Grupo A">1º Bach - Grupo A</option>
                         <option value="Gimnasio">Gimnasio</option>
                         <option value="Auditorio">Auditorio</option>
