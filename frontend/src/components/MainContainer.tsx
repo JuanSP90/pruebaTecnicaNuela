@@ -71,7 +71,8 @@ const MainContainer: React.FC = () => {
                 <div className="flex items-center space-x-4">
                     <div className="flex-shrink-0">
                         <div className=" w-20 h-20 gap-0 rounded-lg bg-custom-gradient flex items-center justify-center">
-                            <h1 className="font-medium leading-none text-moradoFuerte text-3xl">MM</h1>
+                            <h1 className="font-medium leading-none text-moradoFuerte text-3xl">
+                                {staff?.staffName.split(' ').map(name => name[0].toUpperCase()).join('')}</h1>
                         </div>
                     </div>
                     <div className="flex-1 min-w-0">
