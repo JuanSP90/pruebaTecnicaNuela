@@ -8,7 +8,9 @@ module.exports = {
       moradoFuerte: "#5C37EB",
       customBlue: '#635BFF',
       customGray: '#F5F5F5',
-      white: 'white'
+      white: 'white',
+      red: '#ff4d4d',
+      gray: '#808080'
     },
     extend: {
       fontFamily: {
