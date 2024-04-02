@@ -31,8 +31,15 @@ const MainContainer: React.FC = () => {
     useEffect(() => {
         const fetchStaff = async () => {
             try {
-                const response = await axios.get<Staff>('http://localhost:3003/staff/6609d1627f7b4a724dd3da3b');
-                setStaff(response.data);
+                const allStaffsResponse = await axios.get<Staff[]>('http://localhost:3003/staff/all');
+
+                if (allStaffsResponse.data.length > 0) {
+                    const randomIndex = Math.floor(Math.random() * allStaffsResponse.data.length);
+                    const randomStaffId = allStaffsResponse.data[randomIndex]._id;
+
+                    const response = await axios.get<Staff>(`http://localhost:3003/staff/${randomStaffId}`);
+                    setStaff(response.data);
+                }
             } catch (error) {
                 console.error('Error al obtener al profesor', error);
             }
@@ -128,9 +135,6 @@ const MainContainer: React.FC = () => {
                     </div>
                 </div>
             )}
-
-
-
         </div >
     );
 };
