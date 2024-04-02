@@ -1,13 +1,15 @@
 import React from 'react';
 import { useState } from "react";
 import axios from 'axios';
+import { Subject } from './MainContainer'
 
 interface AddSubjectFormProps {
     staffId: string;
     onClose: () => void;
+    onAddSubject: (newSubject: Subject) => void;
 }
 
-const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose }) => {
+const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose, onAddSubject }) => {
 
     const [formData, setFormData] = useState({
         subjectName: "",
@@ -22,12 +24,15 @@ const AddSubjectForm: React.FC<AddSubjectFormProps> = ({ staffId, onClose }) => 
         e.preventDefault();
 
         try {
-            await axios.post(`http://localhost:3003/subject/${staffId}`, formData);
-            alert("Asignatura añadida con éxito");
-            onClose();
+            await axios.post(`http://localhost:3003/subject/${staffId}`, formData)
+                .then(response => {
+                    onAddSubject(response.data.subject);
+                    alert("Asignatura añadida con éxito");
+                    onClose();
+                })
         } catch (error) {
             console.error("Error al añadir la asignatura", error);
-            alert("Error al añadir la asignatura");
+            alert("Debe seleccionar manualmente las propiedades de la asignatura");
         }
     };
 

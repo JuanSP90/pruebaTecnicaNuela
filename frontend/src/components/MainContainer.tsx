@@ -2,8 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import AddSubjectForm from './AddSubjectForm.tsx'
+import SubjectList from './SubjectList.tsx';
 
-interface Subject {
+export interface Subject {
     _id: string;
     subjectName: string;
     type: string;
@@ -50,6 +51,13 @@ const MainContainer: React.FC = () => {
                 </div>
             </div>)
     }
+
+    const addSubjectToStaff = (newSubject: Subject) => {
+        if (staff) {
+            const updatedSubjects = [...staff.subjectId, newSubject];
+            setStaff({ ...staff, subjectId: updatedSubjects });
+        }
+    };
 
     return (
         <div className="w-full pt-12 pr-8 pb-8 pl-12 bg-lightgrey">
@@ -104,16 +112,18 @@ const MainContainer: React.FC = () => {
 
                     <div className="text-sm font-semibold leading-6 text-left font-onest p-2">Horas complementarias</div>
                 </div>
-                <div className="flex justify-end">
-                    <button className="text-sm leading-5 text-white bg-customBlue font-onest px-4 py-2 rounded-lg" onClick={toggleModal}>+ Añadir Asignatura</button>
+                <div className="flex justify-end mt-4">
+                    <button className="text-sm leading-5 text-white bg-customBlue font-onest px-4 py-2 rounded-lg" onClick={toggleModal} >+ Añadir Asignatura</button>
                 </div>
-                <div>Aqui va el compònente de la tabla con sus props</div>
+                <div className="w-full mb-4 mt-4 ">
+                    <SubjectList staffSubjects={staff ? staff.subjectId : []} />
+                </div>
             </div>
 
             {isModalOpen && (
                 <div className="fixed inset-0 bg-customBlue bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white p-6 rounded-lg shadow-lg w-1/3">
-                        <AddSubjectForm staffId={staff._id} onClose={toggleModal} />
+                        <AddSubjectForm staffId={staff._id} onClose={toggleModal} onAddSubject={addSubjectToStaff} />
                     </div>
                 </div>
             )}
